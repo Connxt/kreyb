@@ -12,6 +12,40 @@ angular.module("kreyb", [
 
 .constant("API_URL", "https://kreyb.firebaseio.com/")
 
+.config(function ($stateProvider, $urlRouterProvider) {
+	$stateProvider
+	.state("app", {
+		url: "/app",
+		abstract: true,
+		templateUrl: "templates/abstract.html"
+	})
+	.state("app.restaurant-list", {
+		url: "/restaurant-list",
+		views: {
+			"main": {
+				templateUrl: "templates/restaurant-list/list.html",
+				controller: "RestaurantListController",
+				resolve: {
+					restaurants: function (Restaurants) {
+						return Restaurants;
+					}
+				}
+			}
+		}
+	})
+	.state("app.restaurant-detail", {
+		url: "/restaurant-list/:restaurantId",
+		views: {
+			"main": {
+				templateUrl: "templates/restaurant-list/detail.html",
+				controller: "RestaurantDetailController"
+			}
+		}
+	});
+
+	$urlRouterProvider.otherwise("/app/restaurant-list");
+})
+
 .run(function ($ionicPlatform) {
 	$ionicPlatform.ready(function () {
 		if(window.cordova && window.cordova.plugins.Keyboard) {

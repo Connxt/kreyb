@@ -1,0 +1,11 @@
+<ion-view view-title="Restaurants">
+	<ion-content class="has-header">
+		<button ng-click="addRestaurant()">Add</button>
+		<ion-refresher pulling-text="Pull to refresh..." on-refresh=""></ion-refresher>
+		<ion-list>
+			<ion-item ng-repeat="restaurant in restaurants" href="#/app/restaurant-list/{{ restaurant.$id }}">
+				{{ restaurant.name }}
+			</ion-item>
+		</ion-list>
+	</ion-content>
+</ion-view>

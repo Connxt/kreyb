@@ -8,12 +8,24 @@ angular.module("kreyb.services", [])
 	return FirebaseRef.child(".info/connected");
 })
 
-.factory("Items", function ($firebaseArray, FirebaseRef, Presence) {
-	var itemsRef = FirebaseRef.child("items");
-	return $firebaseArray(itemsRef);
-})
-
 .factory("Restaurants", function ($firebaseArray, FirebaseRef) {
-	var ref = FirebaseRef.child("restaurants");
-	return $firebaseArray(ref);
+	var ref = FirebaseRef.child("restaurants"),
+		restaurants = $firebaseArray(ref);
+
+	return {
+		getAll: function () {
+			return restaurants;
+		},
+		get: function (restaurantId) {
+			return restaurants.$getRecord(restaurantId);
+		},
+		add: function (name) {
+			restaurants.$add({
+				name: name,
+				address: "sample address",
+				contactInfo: "contact info",
+				menu: []
+			});
+		}
+	}
 });

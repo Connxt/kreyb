@@ -38,17 +38,11 @@
 		<script src="js/filters.js"></script>
 		<script src="js/services.js"></script>
 	</head>
-	
-	<body ng-app="kreyb" ng-controller="ItemsController">
-		<ion-header-bar class="top">
-			<h1 class="title">Items {{ isOnline }}</h1>
-			<button class="button button-icon ion-plus" ng-click="addItem()">
-			</button>
-		</ion-header-bar>
-		<ion-content>
-			<ion-list>
-				<ion-item ng-repeat="item in items">{{ item.name }}</ion-item>
-			</ion-list>
-		</ion-content>
+
+	<body ng-app="kreyb">
+		<ion-nav-bar class="top bar-assertive">
+			<ion-nav-back-button></ion-nav-back-button>
+		</ion-nav-bar>
+		<ion-nav-view></ion-nav-view>
 	</body>
 </html>
