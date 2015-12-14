@@ -42,6 +42,9 @@
 	<body ng-app="kreyb">
 		<ion-nav-bar class="top bar-assertive">
 			<ion-nav-back-button></ion-nav-back-button>
+			<ion-nav-buttons side="secondary">
+				<button ng-controller="RestaurantListController" class="button button-icon icon ion-ios-search-strong" ng-click="showFilterBar()"></button>
+			</ion-nav-buttons>
 		</ion-nav-bar>
 		<ion-nav-view></ion-nav-view>
 	</body>

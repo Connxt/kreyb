@@ -12,7 +12,7 @@ angular.module("kreyb", [
 
 .constant("API_URL", "https://kreyb.firebaseio.com/")
 
-.config(function ($stateProvider, $urlRouterProvider) {
+.config(function ($stateProvider, $urlRouterProvider, $ionicFilterBarConfigProvider) {
 	$stateProvider
 	.state("app", {
 		url: "/app",
