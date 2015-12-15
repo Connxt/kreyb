@@ -1,6 +1,6 @@
 angular.module("kreyb.controllers", [])
 
-.controller("RestaurantListController", function ($scope, $ionicContentBanner, $ionicFilterBar, Restaurants) {
+.controller("RestaurantListController", function ($scope, $ionicContentBanner, $ionicFilterBar, Restaurants, Presence) {
 	var contentBannerInstance, filterBarInstance;
 
 	$scope.restaurants = Restaurants.getAll();
@@ -13,22 +13,17 @@ angular.module("kreyb.controllers", [])
 			contentBannerInstance = null;
 		}
 
-		console.log(filterBarInstance);
 		if(filterBarInstance) {
 			filterBarInstance();
 			filterBarInstance = null;
 		}
 
-		$scope.restaurants.$loaded(function (data) {
-			$scope.$broadcast("scroll.refreshComplete");
-			contentBannerInstance = $ionicContentBanner.show({
-				text: ["You're already up to date."],
-				interval: 3000,
-				autoClose: 3000,
-				type: "info",
-				transition: "vertical"
-			});
-		}, function () {
+		console.log(Presence.$value);
+
+		if(Presence.$value) {
+
+		}
+		else {
 			$scope.$broadcast("scroll.refreshComplete");
 			contentBannerInstance = $ionicContentBanner.show({
 				text: ["System Unavailable", "Please try again later."],
@@ -37,7 +32,27 @@ angular.module("kreyb.controllers", [])
 				type: "error",
 				transition: "vertical"
 			});
-		});
+		}
+
+		// $scope.restaurants.$loaded(function (data) {
+		// 	$scope.$broadcast("scroll.refreshComplete");
+		// 	contentBannerInstance = $ionicContentBanner.show({
+		// 		text: ["You're already up to date."],
+		// 		interval: 3000,
+		// 		autoClose: 3000,
+		// 		type: "info",
+		// 		transition: "vertical"
+		// 	});
+		// }, function () {
+			// $scope.$broadcast("scroll.refreshComplete");
+			// contentBannerInstance = $ionicContentBanner.show({
+			// 	text: ["System Unavailable", "Please try again later."],
+			// 	interval: 3000,
+			// 	autoClose: 3000,
+			// 	type: "error",
+			// 	transition: "vertical"
+			// });
+		// });
 	};
 
 	$scope.showFilterBar = function () {
