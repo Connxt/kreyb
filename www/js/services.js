@@ -25,6 +25,7 @@ angular.module("kreyb.services", [])
 				name: name,
 				address: "sample address",
 				contactInfo: "contact info",
+				photo: "image/png;base64,iVBORw0KGgoAAAANSUhEUgAACgAAAAZACAYAAAC1rBvAAAAgAElEQ…ABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIDAUCiiDWUkSl8B8AAAAASUVORK5CYII=",
 				menu: []
 			});
 		}
