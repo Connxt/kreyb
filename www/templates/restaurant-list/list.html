@@ -5,7 +5,7 @@
 	<ion-content>
 		<ion-refresher pulling-text="Pull to refresh..." on-refresh="loadRestaurants()"></ion-refresher>
 		<ion-list>
-			<ion-item class="item-thumbnail-left item-icon-right" type="item-text-wrap" collection-repeat="restaurant in restaurants" href="#/app/restaurant-list/{{ restaurant.$id }}">
+			<ion-item class="item-remove-animate item-thumbnail-left item-icon-right" type="item-text-wrap" ng-repeat="restaurant in restaurants" href="#/app/restaurant-list/{{ restaurant.$id }}">
 				<img ng-src="{{ restaurant.photo }}" />
 				<h2>{{ restaurant.name }}</h2>
 				<p>{{ restaurant.address }}</p>

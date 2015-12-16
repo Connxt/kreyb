@@ -23,7 +23,7 @@ angular.module("kreyb", [
 	$ionicFilterBarConfigProvider.search("ion-search");
 	$ionicFilterBarConfigProvider.backdrop(true);
 	$ionicFilterBarConfigProvider.transition("vertical");
-	$ionicFilterBarConfigProvider.placeholder("Search...");
+	$ionicFilterBarConfigProvider.placeholder("What are you kreybing for?");
 
 	$stateProvider
 	.state("app", {
