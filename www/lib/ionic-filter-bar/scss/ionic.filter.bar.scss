@@ -28,9 +28,9 @@ $z-index-filter-bar: 11;
 //-----------------------------------
 
 .filter-bar-backdrop {
-  @include transition(opacity 150ms ease-in-out);
+  @include transition(opacity 250ms ease-in-out);
   opacity: 0;
-  background-color: rgba(0,0,0,0.4);
+  background-color: rgba(0,0,0,0.6);
   position: fixed;
   top: 0;
   left: 0;
@@ -154,26 +154,4 @@ $z-index-filter-bar: 11;
 .filter-bar-in {
   @include translate3d(0, 0, 0);
   opacity: 1;
-}
-
-.filter-bar-modal {
-  .item {
-    &.item-input {
-      padding-right: $item-padding;
-    }
-  }
-  .list-right-editing {
-    .item.item-input {
-      opacity: .5;
-    }
-  }
-
-  //in my opinion the ios checkmark is a little skimp.. make it bigger
-  .button.button-icon.ion-ios-checkmark-empty:before {
-    font-size: 42px;
-  }
-}
-
-.filter-bar-hide {
-  display: none;
 }

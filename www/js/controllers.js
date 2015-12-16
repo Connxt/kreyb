@@ -7,7 +7,7 @@ angular.module("kreyb.controllers", [])
 
 	$scope.loadRestaurants = function () {
 		$scope.restaurants = Restaurants.getAll();
-		
+
 		if(contentBannerInstance) {
 			contentBannerInstance();
 			contentBannerInstance = null;
@@ -67,6 +67,9 @@ angular.module("kreyb.controllers", [])
 			items: $scope.restaurants,
 			update: function (filteredItems, filterText) {
 				$scope.restaurants = filteredItems;
+				if(filterText) {
+					console.log(filterText);
+				}
 			}
 		});
 	};

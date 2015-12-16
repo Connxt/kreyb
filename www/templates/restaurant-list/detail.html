@@ -1,5 +1,25 @@
 <ion-view view-title="{{ restaurant.name }}">
 	<ion-content class="has-header">
+		<ion-list class="card">
+			<ion-item class="item-image">
+				<img ng-src="{{ restaurant.coverPhoto }}" />
+			</ion-item>
+
+			<ion-item class="item-thumbnail-left">
+				<img ng-src="{{ restaurant.photo }}" />
+				<h2>{{ restaurant.name }}</h2>
+			</ion-item>
+
+			<ion-item>
+				<p>{{ restaurant.description }}</p>
+				<p>{{ restaurant.address }}</p>
+				<p>{{ restaurant.contactInfo }}</p>
+			</ion-item>
+		</ion-list>
+	</ion-content>
+</ion-view>
+<!-- <ion-view view-title="{{ restaurant.name }}">
+	<ion-content class="has-header">
 		<div class="list card" style="margin:0px;">
 			<div class="item item-avatar">
 			    <img src="img/logo.jpg">
@@ -25,4 +45,4 @@
 			</div>
 		</div>
 	</ion-content>
-</ion-view>
+</ion-view> -->

@@ -8,11 +8,23 @@ angular.module("kreyb", [
 	"pouchdb",
 	"jett.ionic.filter.bar",
 	"jett.ionic.content.banner",
+	"jett.ionic.scroll.sista",
+	"ion-affix",
+	"ngIOS9UIWebViewPatch",
+	"ion-gallery"
+
 ])
 
 .constant("API_URL", "https://kreyb.firebaseio.com/")
 
 .config(function ($stateProvider, $urlRouterProvider, $ionicFilterBarConfigProvider) {
+	$ionicFilterBarConfigProvider.theme("light");
+	$ionicFilterBarConfigProvider.clear("ion-close");
+	$ionicFilterBarConfigProvider.search("ion-search");
+	$ionicFilterBarConfigProvider.backdrop(true);
+	$ionicFilterBarConfigProvider.transition("vertical");
+	$ionicFilterBarConfigProvider.placeholder("Search...");
+
 	$stateProvider
 	.state("app", {
 		url: "/app",
@@ -24,12 +36,7 @@ angular.module("kreyb", [
 		views: {
 			"main": {
 				templateUrl: "templates/restaurant-list/list.html",
-				controller: "RestaurantListController",
-				resolve: {
-					restaurants: function (Restaurants) {
-						return Restaurants;
-					}
-				}
+				controller: "RestaurantListController"
 			}
 		}
 	})
@@ -59,7 +66,8 @@ angular.module("kreyb", [
 			cordova.plugins.Keyboard.disableScroll(true);
 		}
 		if(window.StatusBar) {
-			StatusBar.styleDefault();
+			// StatusBar.styleDefault();
+			StatusBar.styleLightContent();
 		}
 	});
 });
