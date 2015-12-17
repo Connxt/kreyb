@@ -1,0 +1,15 @@
+.text-overlay span {
+	bottom: 5%;
+	left: 0;
+	padding: 0.25em 0.75em;
+	position: absolute;
+	text-align: left;
+}
+
+.text-overlay h2, .text-overlay h3, .text-overlay h4 {
+	color: white;
+}
+
+./*text-overlay h3 {
+	color: white;
+}*/

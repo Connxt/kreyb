@@ -1,10 +1,22 @@
 angular.module("kreyb.controllers", [])
 
-.controller("RestaurantListController", function ($scope, $ionicContentBanner, $ionicFilterBar, Restaurants, Presence) {
+.controller("RestaurantListController", function ($scope, $ionicLoading, $ionicContentBanner, $ionicFilterBar, Restaurants, Presence) {
 	var contentBannerInstance, filterBarInstance;
+
+
+	$ionicLoading.show({
+		templateUrl: "templates/loading.html",
+		noBackdrop: true
+	});
 
 	$scope.restaurants = Restaurants.getAll();
 
+	$scope.restaurants.$loaded(function (data) {
+		$ionicLoading.hide();
+	}, function () {
+		$ionicLoading.hide();
+	});
+	
 	$scope.loadRestaurants = function () {
 		$scope.restaurants = Restaurants.getAll();
 
@@ -76,6 +88,19 @@ angular.module("kreyb.controllers", [])
 })
 
 .controller("RestaurantDetailController", function ($scope, $stateParams, Restaurants) {
-	// $scope.restaurant = Restaurants.$getRecord($stateParams.restaurantId);
 	$scope.restaurant = Restaurants.get($stateParams.restaurantId);
+	$scope.lastDivider = "";
+
+	$scope.isDividerDifferent = function (category) {
+		if($scope.lastDivider != category) {
+			$scope.lastDivider = category;
+			return true;
+		}
+
+		return false;
+	};
+
+	$scope.dividerFunction = function (key) {
+		return key;
+	}
 });

@@ -1,48 +1,39 @@
 <ion-view view-title="{{ restaurant.name }}">
-	<ion-content class="has-header">
-		<ion-list class="card">
-			<ion-item class="item-image">
-				<img ng-src="{{ restaurant.coverPhoto }}" />
+	<ion-content ion-sticky>
+	<!-- <ion-content> -->
+		<ion-list class="card" style="margin: 0px;">
+			<ion-item class="item-image text-overlay">
+				<div style="background-color: black;">
+					<img ng-src="{{ restaurant.coverPhoto }}" style="opacity: 0.8;"/>
+				</div>
+				<span>
+					<ion-item class="item-thumbnail-left" style="background-color: transparent;">
+						<img ng-src="{{ restaurant.photo }}" />
+						<h2>{{ restaurant.name }}</h2>
+						<h4>{{ restaurant.description }}</h4>
+						<h4>{{ restaurant.address }}</h4>
+						<h4>{{ restaurant.contactInfo }}</h4>
+					</ion-item>
+				</span>
 			</ion-item>
 
-			<ion-item class="item-thumbnail-left">
-				<img ng-src="{{ restaurant.photo }}" />
-				<h2>{{ restaurant.name }}</h2>
-			</ion-item>
-
-			<ion-item>
-				<p>{{ restaurant.description }}</p>
-				<p>{{ restaurant.address }}</p>
-				<p>{{ restaurant.contactInfo }}</p>
+			<ion-item auto-list-divider auto-list-divider-value="{{ offering.category }}" auto-list-divider-function="dividerFunction" class="item-remove-animate item-thumbnail-left" type="item-text-wrap" ng-repeat="offering in restaurant.offerings">
+				<img ng-src="{{  }}" />
+				<h2>{{ offering.name }}</h2>
+				<p>{{ offering.description }}</p>
+				<p>{{ offering.price | currency:"₱" }}</p>
 			</ion-item>
 		</ion-list>
+
+		<!-- <div class="list" ng-repeat="offering in restaurant.offerings | orderBy:'category'">
+			<div class="item item-divider" ng-if="isDividerDifferent(offering.category)" ion-affix>{{ offering.category }}</div>
+			<ion-item class="item-remove-animate item-thumbnail-left" type="item-text-wrap">
+				<img ng-src="{{  }}" />
+				<h2>{{ offering.name }}</h2>
+				<p>{{ offering.category }}</p>
+				<p>{{ offering.description }}</p>
+				<p>{{ offering.price | currency:"₱" }}</p>
+			</ion-item>
+		</div> -->
 	</ion-content>
 </ion-view>
-<!-- <ion-view view-title="{{ restaurant.name }}">
-	<ion-content class="has-header">
-		<div class="list card" style="margin:0px;">
-			<div class="item item-avatar">
-			    <img src="img/logo.jpg">
-			    <h2>{{ restaurant.name }}</h2>
-			    <p>Real food for your busy lifestyle</p>
-			</div>
-		  	<div class="item item-image">
-		    	<img src="img/resto.jpg">
-		  	</div>
-		    <div class="tabs-striped tabs-color-assertive">
-			    <div class="tabs" style="position:relative;">
-			    	<a class="tab-item active" href="#">
-			        	<i class="icon ion-home"></i>
-			        	sadasdsa
-			      	</a>
-			      	<a class="tab-item" href="#">
-			        	<i class="icon ion-star"></i>
-			      	</a>
-			      	<a class="tab-item" href="#">
-				        <i class="icon ion-gear-a"></i>
-			      	</a>
-			    </div>
-			</div>
-		</div>
-	</ion-content>
-</ion-view> -->

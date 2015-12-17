@@ -5616,7 +5616,8 @@ ion-tabs.tabs-color-active-dark .tab-item {
   .loading-container .loading {
     padding: 20px;
     border-radius: 5px;
-    background-color: rgba(0, 0, 0, 0.7);
+    /*background-color: rgba(0, 0, 0, 0.7);*/
+    background-color: transparent;
     color: #fff;
     text-align: center;
     text-overflow: ellipsis;
