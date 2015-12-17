@@ -23,6 +23,16 @@
 				<p>{{ offering.description }}</p>
 				<p>{{ offering.price | currency:"₱" }}</p>
 			</ion-item>
+
+			<!-- <span ng-repeat="offering in restaurant.offerings">
+				<div class="item item-divider" ng-if="isDividerDifferent(offering.category)" affix-within-container=".list">{{ offering.category }}</div>
+				<ion-item class="item-remove-animate item-thumbnail-left" type="item-text-wrap">
+					<img ng-src="{{  }}" />
+					<h2>{{ offering.name }}</h2>
+					<p>{{ offering.description }}</p>
+					<p>{{ offering.price | currency:"₱" }}</p>
+				</ion-item>
+			</span> -->
 		</ion-list>
 
 		<!-- <div class="list" ng-repeat="offering in restaurant.offerings | orderBy:'category'">

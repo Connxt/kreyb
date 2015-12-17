@@ -16,6 +16,7 @@ angular.module('ionic.ion.autoListDivider',[])
 				var divideKey = divideFunction(key);
 				
 				if(divideKey != lastDivideKey) { 
+					// var contentTr = angular.element("<div class='item item-divider' affix-within-container='.list'>"+divideKey+"</div>");
 					var contentTr = angular.element("<div class='item item-divider' ion-affix>"+divideKey+"</div>");
 					element[0].parentNode.insertBefore(contentTr[0], element[0]);
 				}
