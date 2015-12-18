@@ -29,10 +29,7 @@ angular.module("kreyb.controllers", [])
 			contentBannerInstance = null;
 		}
 
-		$ionicLoading.show({
-			templateUrl: "templates/loading.html",
-			noBackdrop: true
-		});
+		$ionicLoading.show({ templateUrl: "templates/loading.html" });
 
 		$scope.restaurants = Restaurants.getAll();
 
@@ -111,10 +108,34 @@ angular.module("kreyb.controllers", [])
 	};
 })
 
-.controller("RestaurantDetailController", function ($scope, $stateParams, Restaurants) {
+.controller("RestaurantDetailController", function ($scope, $stateParams, $ionicModal, $ionicSlideBoxDelegate, Restaurants) {
 	$scope.restaurant = Restaurants.get($stateParams.restaurantId);
 	
 	$scope.dividerFunction = function (key) {
 		return key;
-	}
+	};
+
+	$ionicModal.fromTemplateUrl("templates/restaurant-list/viewer.html", {
+		scope: $scope,
+		animation: "slide-in-up"
+	}).then(function (modal) {
+		$scope.modal = modal;
+	});
+
+	$scope.openViewer = function (index) {
+		$ionicSlideBoxDelegate.slide(index);
+		$scope.modal.show();
+	};
+
+	$scope.closeViewer = function () {
+		$scope.modal.hide();
+	};
+
+	$scope.$on('$destroy', function() {
+		$scope.modal.remove();
+	});
+
+	$scope.slideChanged = function (index) {
+		$scope.slideIndex = index;
+	};
 });

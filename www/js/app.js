@@ -19,7 +19,7 @@ angular.module("kreyb", [
 
 .constant("API_URL", "https://kreyb.firebaseio.com/")
 
-.constant("MAX_LOADING_TIME", 5000)
+.constant("MAX_LOADING_TIME", 20000)
 
 .config(function ($stateProvider, $urlRouterProvider, $ionicFilterBarConfigProvider) {
 	$ionicFilterBarConfigProvider.theme("light");

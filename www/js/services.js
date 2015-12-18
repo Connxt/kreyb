@@ -4,11 +4,6 @@ angular.module("kreyb.services", [])
 	return new Firebase(API_URL);
 })
 
-.factory("Presence", function ($firebaseObject, FirebaseRef) {
-	// return FirebaseRef.child(".info/connected");
-	return $firebaseObject(FirebaseRef.child(".info/connected"));
-})
-
 .factory("Restaurants", function ($firebaseArray, FirebaseRef) {
 	var ref = FirebaseRef.child("restaurants"),
 		restaurants = $firebaseArray(ref);
