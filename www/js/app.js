@@ -11,9 +11,10 @@ angular.module("kreyb", [
 	"jett.ionic.scroll.sista",
 	"ngIOS9UIWebViewPatch",
 	"ion-gallery",
+	
 	"ionic.ion.autoListDivider",
 	"ion-sticky",
-	"ion-affix"
+	"ion-affix",
 ])
 
 .constant("API_URL", "https://kreyb.firebaseio.com/")
