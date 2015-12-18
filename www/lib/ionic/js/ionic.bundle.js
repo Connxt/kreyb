@@ -8108,7 +8108,10 @@ ionic.views.Slider = ionic.views.View.inherit({
     function setup() {
 
       // do not setup if the container has no width
-      if (!container.offsetWidth) {
+      // if (!container.offsetWidth) {
+      //   return;
+      // }
+      if (!container.offsetWidth && !element.children.length) {
         return;
       }
 
