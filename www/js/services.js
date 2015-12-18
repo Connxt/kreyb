@@ -27,15 +27,15 @@ angular.module("kreyb.services", [])
 	}
 })
 
-.factory("Connectivity", function () {
-	return {
-		isOnline: function () {
-			if(ionic.Platform.isWebView()) {
-				return $cordovaNetwork.isOnline();
-			}
-			else {
-				return navigator.onLine;
-			}
-		}
-	};
-});
+// .factory("Connectivity", function ($cordovaNetwork) {
+// 	return {
+// 		isOnline: function () {
+// 			if(ionic.Platform.isWebView()) {
+// 				return $cordovaNetwork.isOnline();
+// 			}
+// 			else {
+// 				return navigator.onLine;
+// 			}
+// 		}
+// 	};
+// });

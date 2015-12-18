@@ -1,6 +1,6 @@
 angular.module("kreyb.controllers", [])
 
-.controller("RestaurantListController", function ($scope, $ionicLoading, $ionicContentBanner, $ionicFilterBar, Restaurants, Connectivity, MAX_LOADING_TIME) {
+.controller("RestaurantListController", function ($scope, $ionicLoading, $ionicContentBanner, $ionicFilterBar, Restaurants, MAX_LOADING_TIME) {
 	var contentBannerInstance,
 		filterBarInstance,
 		successContentBannerOptions = {
@@ -33,29 +33,46 @@ angular.module("kreyb.controllers", [])
 
 		$scope.restaurants = Restaurants.getAll();
 
-		if(!Connectivity.isOnline()) {
-			$scope.noResults = true;
+		// if(!Connectivity.isOnline()) {
+		// 	$scope.noResults = true;
+		// 	$ionicLoading.hide();
+		// 	contentBannerInstance = $ionicContentBanner.show(failedContentBannerOptions);
+		// }
+		// else {
+		// 	$scope.restaurants.$loaded(function (data) {
+		// 		clearInterval(loadingChecker);
+		// 		$ionicLoading.hide();
+		// 		contentBannerInstance = $ionicContentBanner.show(successContentBannerOptions);
+		// 	});
+
+		// 	loadingChecker = setInterval(function () {
+		// 		loadTime += 1000;
+
+		// 		if(!Connectivity.isOnline() || loadTime >= MAX_LOADING_TIME) {
+		// 			$scope.noResults = true;
+		// 			clearInterval(loadingChecker);
+		// 			$ionicLoading.hide();
+		// 			contentBannerInstance = $ionicContentBanner.show(failedContentBannerOptions);
+		// 		}
+		// 	}, 1000);
+		// }
+		
+		$scope.restaurants.$loaded(function (data) {
+			clearInterval(loadingChecker);
 			$ionicLoading.hide();
-			contentBannerInstance = $ionicContentBanner.show(failedContentBannerOptions);
-		}
-		else {
-			$scope.restaurants.$loaded(function (data) {
+			contentBannerInstance = $ionicContentBanner.show(successContentBannerOptions);
+		});
+
+		loadingChecker = setInterval(function () {
+			loadTime += 1000;
+
+			if(loadTime >= MAX_LOADING_TIME) {
+				$scope.noResults = true;
 				clearInterval(loadingChecker);
 				$ionicLoading.hide();
-				contentBannerInstance = $ionicContentBanner.show(successContentBannerOptions);
-			});
-
-			loadingChecker = setInterval(function () {
-				loadTime += 1000;
-
-				if(!Connectivity.isOnline() || loadTime >= MAX_LOADING_TIME) {
-					$scope.noResults = true;
-					clearInterval(loadingChecker);
-					$ionicLoading.hide();
-					contentBannerInstance = $ionicContentBanner.show(failedContentBannerOptions);
-				}
-			}, 1000);
-		}
+				contentBannerInstance = $ionicContentBanner.show(failedContentBannerOptions);
+			}
+		}, 1000);
 	}();
 
 	$scope.reload = function () {
@@ -69,30 +86,47 @@ angular.module("kreyb.controllers", [])
 
 		$scope.restaurants = Restaurants.getAll();
 
-		if(!Connectivity.isOnline()) {
-			$scope.noResults = true;
+		// if(!Connectivity.isOnline()) {
+		// 	$scope.noResults = true;
+		// 	$scope.$broadcast("scroll.refreshComplete");
+		// 	contentBannerInstance = $ionicContentBanner.show(failedContentBannerOptions);
+		// }
+		// else {
+		// 	$scope.restaurants.$loaded(function (data) {
+		// 		$scope.noResults = false;
+		// 		clearInterval(loadingChecker);
+		// 		$scope.$broadcast("scroll.refreshComplete");
+		// 		contentBannerInstance = $ionicContentBanner.show(successContentBannerOptions);
+		// 	});
+
+		// 	loadingChecker = setInterval(function () {
+		// 		loadTime += 1000;
+
+		// 		if(!Connectivity.isOnline() || loadTime >= MAX_LOADING_TIME) {
+		// 			$scope.noResults = true;
+		// 			clearInterval(loadingChecker);
+		// 			$scope.$broadcast("scroll.refreshComplete");
+		// 			contentBannerInstance = $ionicContentBanner.show(failedContentBannerOptions);
+		// 		}
+		// 	}, 1000);
+		// }
+		$scope.restaurants.$loaded(function (data) {
+			$scope.noResults = false;
+			clearInterval(loadingChecker);
 			$scope.$broadcast("scroll.refreshComplete");
-			contentBannerInstance = $ionicContentBanner.show(failedContentBannerOptions);
-		}
-		else {
-			$scope.restaurants.$loaded(function (data) {
-				$scope.noResults = false;
+			contentBannerInstance = $ionicContentBanner.show(successContentBannerOptions);
+		});
+
+		loadingChecker = setInterval(function () {
+			loadTime += 1000;
+
+			if(loadTime >= MAX_LOADING_TIME) {
+				$scope.noResults = true;
 				clearInterval(loadingChecker);
 				$scope.$broadcast("scroll.refreshComplete");
-				contentBannerInstance = $ionicContentBanner.show(successContentBannerOptions);
-			});
-
-			loadingChecker = setInterval(function () {
-				loadTime += 1000;
-
-				if(!Connectivity.isOnline() || loadTime >= MAX_LOADING_TIME) {
-					$scope.noResults = true;
-					clearInterval(loadingChecker);
-					$scope.$broadcast("scroll.refreshComplete");
-					contentBannerInstance = $ionicContentBanner.show(failedContentBannerOptions);
-				}
-			}, 1000);
-		}
+				contentBannerInstance = $ionicContentBanner.show(failedContentBannerOptions);
+			}
+		}, 1000);
 	};
 	
 	$scope.showFilterBar = function () {
