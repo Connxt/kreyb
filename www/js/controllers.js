@@ -32,30 +32,6 @@ angular.module("kreyb.controllers", [])
 		$ionicLoading.show({ templateUrl: "templates/loading.html" });
 
 		$scope.restaurants = Restaurants.getAll();
-
-		// if(!Connectivity.isOnline()) {
-		// 	$scope.noResults = true;
-		// 	$ionicLoading.hide();
-		// 	contentBannerInstance = $ionicContentBanner.show(failedContentBannerOptions);
-		// }
-		// else {
-		// 	$scope.restaurants.$loaded(function (data) {
-		// 		clearInterval(loadingChecker);
-		// 		$ionicLoading.hide();
-		// 		contentBannerInstance = $ionicContentBanner.show(successContentBannerOptions);
-		// 	});
-
-		// 	loadingChecker = setInterval(function () {
-		// 		loadTime += 1000;
-
-		// 		if(!Connectivity.isOnline() || loadTime >= MAX_LOADING_TIME) {
-		// 			$scope.noResults = true;
-		// 			clearInterval(loadingChecker);
-		// 			$ionicLoading.hide();
-		// 			contentBannerInstance = $ionicContentBanner.show(failedContentBannerOptions);
-		// 		}
-		// 	}, 1000);
-		// }
 		
 		$scope.restaurants.$loaded(function (data) {
 			clearInterval(loadingChecker);

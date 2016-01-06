@@ -24,18 +24,13 @@ angular.module("kreyb.services", [])
 				menu: []
 			});
 		}
-	}
+	};
 })
 
-// .factory("Connectivity", function ($cordovaNetwork) {
-// 	return {
-// 		isOnline: function () {
-// 			if(ionic.Platform.isWebView()) {
-// 				return $cordovaNetwork.isOnline();
-// 			}
-// 			else {
-// 				return navigator.onLine;
-// 			}
-// 		}
-// 	};
-// });
+.factory("OfflineStorage", function () {
+
+})
+
+.factory("OnlineStorage", function () {
+	
+});
