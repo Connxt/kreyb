@@ -1,1 +1,3 @@
-angular.module("kreyb.filters", []);
+(function () {
+	angular.module("kreyb.filters", []);
+})();

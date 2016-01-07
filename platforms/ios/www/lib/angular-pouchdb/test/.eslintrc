@@ -1,6 +1,0 @@
-env:
-  jasmine: true
-globals:
-  module: false
-  inject: false
-  Blob: false

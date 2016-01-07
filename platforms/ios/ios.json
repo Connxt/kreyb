@@ -35,10 +35,6 @@
                         {
                             "xml": "<feature name=\"Keyboard\"><param name=\"ios-package\" onload=\"true\" value=\"IonicKeyboard\" /></feature>",
                             "count": 1
-                        },
-                        {
-                            "xml": "<feature name=\"NetworkStatus\"><param name=\"ios-package\" value=\"CDVConnection\" /></feature>",
-                            "count": 1
                         }
                     ]
                 }
@@ -62,9 +58,6 @@
             "PACKAGE_NAME": "com.ionicframework.kreyb562504"
         },
         "ionic-plugin-keyboard": {
-            "PACKAGE_NAME": "com.ionicframework.kreyb562504"
-        },
-        "cordova-plugin-network-information": {
             "PACKAGE_NAME": "com.ionicframework.kreyb562504"
         }
     },
@@ -118,23 +111,6 @@
                 "cordova.plugins.Keyboard"
             ],
             "runs": true
-        },
-        {
-            "file": "plugins/cordova-plugin-network-information/www/network.js",
-            "id": "cordova-plugin-network-information.network",
-            "pluginId": "cordova-plugin-network-information",
-            "clobbers": [
-                "navigator.connection",
-                "navigator.network.connection"
-            ]
-        },
-        {
-            "file": "plugins/cordova-plugin-network-information/www/Connection.js",
-            "id": "cordova-plugin-network-information.Connection",
-            "pluginId": "cordova-plugin-network-information",
-            "clobbers": [
-                "Connection"
-            ]
         }
     ],
     "plugin_metadata": {
@@ -143,7 +119,6 @@
         "cordova-plugin-splashscreen": "3.0.0",
         "cordova-plugin-statusbar": "2.0.0",
         "cordova-plugin-whitelist": "1.2.0",
-        "ionic-plugin-keyboard": "1.0.8",
-        "cordova-plugin-network-information": "1.1.0"
+        "ionic-plugin-keyboard": "1.0.8"
     }
 }

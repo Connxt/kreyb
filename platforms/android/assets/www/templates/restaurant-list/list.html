@@ -7,7 +7,8 @@
 		<div class="card" ng-if="noResults && restaurants.length <= 0" style="text-align: center;"><h5><i class="ion-alert-circled"></i> No Results Found!</h5></div>
 		<ion-list>
 			<ion-item class="item-remove-animate item-thumbnail-left item-icon-right" type="item-text-wrap" ng-repeat="restaurant in restaurants" href="#/app/restaurant-list/{{ restaurant.$id }}">
-				<img ng-src="{{ restaurant.photo }}" />
+				<!-- <img ng-src="{{ restaurant.photo }}" /> -->
+				<img image-lazy-src="{{ restaurant.photo }}" image-lazy-loader="dots" image-lazy-distance-from-bottom-to-load="100" />
 				<h2>{{ restaurant.name }}</h2>
 				<p>{{ restaurant.address }}</p>
 				<p>{{ restaurant.contactInfo }}</p>

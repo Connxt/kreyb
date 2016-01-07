@@ -1,1 +1,3 @@
-angular.module("kreyb.directives", []);
+(function () {
+	angular.module("kreyb.directives", []);
+})();

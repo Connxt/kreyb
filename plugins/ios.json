@@ -24,9 +24,6 @@
         },
         "ionic-plugin-keyboard": {
             "PACKAGE_NAME": "com.ionicframework.kreyb562504"
-        },
-        "cordova-plugin-network-information": {
-            "PACKAGE_NAME": "com.ionicframework.kreyb562504"
         }
     },
     "dependent_plugins": {}
