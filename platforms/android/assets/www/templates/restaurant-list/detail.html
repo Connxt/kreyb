@@ -1,0 +1,28 @@
+<ion-view view-title="{{ restaurant.name }}">
+	<ion-content ion-sticky>
+	<!-- <ion-content> -->
+		<ion-list class="card" style="margin: 0px;">
+			<ion-item class="item-image text-overlay">
+				<div style="background-color: black;">
+					<img ng-src="{{ restaurant.coverPhoto }}" style="opacity: 0.8;"/>
+				</div>
+				<span>
+					<ion-item class="item-thumbnail-left" style="background-color: transparent;">
+						<img ng-src="{{ restaurant.photo }}" />
+						<h2>{{ restaurant.name }}</h2>
+						<h4>{{ restaurant.description }}</h4>
+						<h4>{{ restaurant.address }}</h4>
+						<h4>{{ restaurant.contactInfo }}</h4>
+					</ion-item>
+				</span>
+			</ion-item>
+			
+			<ion-item auto-list-divider auto-list-divider-value="{{ offering.category }}" auto-list-divider-function="dividerFunction" class="item-remove-animate item-thumbnail-left" type="item-text-wrap" ng-repeat="offering in restaurant.offerings" ng-click="openViewer($index)">
+				<img ng-src="{{ offering.photo }}" />
+				<h2>{{ offering.name }}</h2>
+				<p>{{ offering.description }}</p>
+				<p>{{ offering.price | currency:"₱" }}</p>
+			</ion-item>
+		</ion-list>
+	</ion-content>
+</ion-view>
