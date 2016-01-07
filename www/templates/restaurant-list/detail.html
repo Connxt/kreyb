@@ -5,12 +5,10 @@
 			<ion-item class="item-image text-overlay">
 				<div style="background-color: black;">
 					<img ng-src="{{ restaurant.coverPhoto }}" style="opacity: 0.8;"/>
-					<!-- <img image-lazy-src="{{ restaurant.coverPhoto }}" image-lazy-loader="dots" style="opacity: 0.8;" /> -->
 				</div>
 				<span>
 					<ion-item class="item-thumbnail-left" style="background-color: transparent;">
 						<img ng-src="{{ restaurant.photo }}" />
-						<!-- <img image-lazy-src="{{ restaurant.photo }}" image-lazy-loader="dots" /> -->
 						<h2>{{ restaurant.name }}</h2>
 						<h4>{{ restaurant.description }}</h4>
 						<h4>{{ restaurant.address }}</h4>
@@ -19,8 +17,7 @@
 				</span>
 			</ion-item>
 			
-			<ion-item auto-list-divider auto-list-divider-value="{{ offering.category }}" auto-list-divider-function="dividerFunction" class="item-remove-animate item-thumbnail-left" type="item-text-wrap" ng-repeat="offering in restaurant.offerings" ng-click="openViewer($index)">
-				<!-- <img ng-src="{{ offering.photo }}" /> -->
+			<ion-item auto-list-divider auto-list-divider-value="{{ offering.category }}" auto-list-divider-function="dividerFunction" class="item-remove-animate item-thumbnail-left" type="item-text-wrap" collection-repeat="offering in restaurant.offerings" ng-click="openViewer($index)">
 				<img image-lazy-src="{{ offering.photo }}" image-lazy-loader="dots" image-lazy-distance-from-bottom-to-load="100" />
 				<h2>{{ offering.name }}</h2>
 				<p>{{ offering.description }}</p>
