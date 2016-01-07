@@ -21,7 +21,8 @@
 			
 			<ion-item auto-list-divider auto-list-divider-value="{{ offering.category }}" auto-list-divider-function="dividerFunction" class="item-remove-animate item-thumbnail-left" type="item-text-wrap" ng-repeat="offering in restaurant.offerings" ng-click="openViewer($index)">
 				<!-- <img ng-src="{{ offering.photo }}" /> -->
-				<img image-lazy-src="{{ offering.photo }}" image-lazy-loader="dots" image-lazy-distance-from-bottom-to-load="100" />
+				<!-- <img image-lazy-src="{{ offering.photo }}" image-lazy-loader="dots" image-lazy-distance-from-bottom-to-load="100" /> -->
+				<img image-lazy-src="{{ }}" image-lazy-loader="dots" image-lazy-distance-from-bottom-to-load="100" />
 				<h2>{{ offering.name }}</h2>
 				<p>{{ offering.description }}</p>
 				<p>{{ offering.price | currency:"₱" }}</p>
