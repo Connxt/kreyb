@@ -7,16 +7,6 @@
 
 	.factory("Restaurants", function ($q, $ionicPlatform, OnlineData, OfflineData) {
 		var deferred = $q.defer();
-
-		// if(OfflineData.getAll().length >= 1) {
-		// 	deferred.resolve(OfflineData.getAll());
-		// }
-		// else {
-		// 	OnlineData.getAll().$loaded(function (data) {
-		// 		OfflineData.save(data);
-		// 		deferred.resolve(OfflineData.getAll());
-		// 	});
-		// }
 		
 		$ionicPlatform.ready(function () {
 			OfflineData.getAll().then(function (restaurants) {
@@ -85,13 +75,8 @@
 			});
 		});
 
-		// var restaurants = window.localStorage[OFFLINE_KEY];
-
 		return {
 			save: function (data) {
-				// window.localStorage[OFFLINE_KEY] = angular.toJson(data);
-				// restaurants = angular.toJson(data);
-				
 				var deferred = $q.defer();
 
 				var restaurantsSQL = "INSERT INTO 'restaurants' ";
@@ -155,15 +140,6 @@
 				return deferred.promise;
 			},
 			getAll: function () {
-				// if(restaurants) {
-				// 	restaurants = angular.fromJson(restaurants);
-				// }
-				// else {
-				// 	restaurants = [];
-				// }
-
-				// return restaurants;
-				
 				var deferred = $q.defer();
 
 				db.transaction(function (sqlite) {
@@ -179,19 +155,6 @@
 				return deferred.promise;
 			},
 			get: function (restaurantId) {
-				// var restaurant = {};
-				
-				// if(restaurants) {
-				// 	for(var i = 0; i < restaurants.length; i++) {
-				// 		if(restaurants[i].$id == restaurantId) {
-				// 			restaurant = restaurants[i];
-				// 			break;
-				// 		}
-				// 	}
-				// }
-
-				// return restaurant;
-				
 				var deferred = $q.defer(),
 					restaurant = {};
 

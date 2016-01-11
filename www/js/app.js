@@ -21,8 +21,6 @@
 
 	.constant("API_URL", "https://kreyb.firebaseio.com/")
 
-	.constant("OFFLINE_KEY", "kreyb.restaurants")
-
 	.constant("MAX_LOADING_TIME", 100000)
 
 	.config(function ($ionicConfigProvider, $stateProvider, $urlRouterProvider, $ionicFilterBarConfigProvider) {
