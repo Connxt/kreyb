@@ -30,6 +30,8 @@
 								OfflineData.getAll().then(function (restaurants) {
 									deferred.resolve(restaurants);
 								});
+
+								OnlineData.disconnect();
 							}
 						});
 					});
@@ -47,10 +49,6 @@
 		}
 	})
 
-	.factory("Offerings", function ($q, OnlineData, OfflineData) {
-		var deferred = $q.defer();
-	})
-
 	.factory("OnlineData", function ($firebaseArray, FirebaseRef) {
 		var ref = FirebaseRef.child("restaurants"),
 			restaurants = $firebaseArray(ref);
@@ -61,6 +59,9 @@
 			},
 			get: function (restaurantId) {
 				return restaurants.$getRecord(restaurantId);
+			},
+			disconnect: function () {
+				FirebaseRef.goOffline();
 			}
 		};
 	})
