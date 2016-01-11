@@ -15,7 +15,8 @@
 		"ion-gallery",
 		"ionic.ion.autoListDivider",
 		"ion-sticky",
-		"ionicLazyLoad"
+		"ionicLazyLoad",
+		"ionic-native-transitions"
 	])
 
 	.constant("API_URL", "https://kreyb.firebaseio.com/")
@@ -24,19 +25,30 @@
 
 	.constant("MAX_LOADING_TIME", 100000)
 
-	.config(function ($ionicConfigProvider, $stateProvider, $urlRouterProvider, $ionicFilterBarConfigProvider) {
-		if(window.cordova) {
-			// $ionicConfigProvider.views.transition("none");
-			// // then override any default you want
-			// window.plugins.nativepagetransitions.globalOptions.duration = 500;
-			// window.plugins.nativepagetransitions.globalOptions.iosdelay = 350;
-			// window.plugins.nativepagetransitions.globalOptions.androiddelay = 350;
-			// window.plugins.nativepagetransitions.globalOptions.winphonedelay = 350;
-			// window.plugins.nativepagetransitions.globalOptions.slowdownfactor = 4;
-			// // these are used for slide left/right only currently
-			// window.plugins.nativepagetransitions.globalOptions.fixedPixelsTop = 0;
-			// window.plugins.nativepagetransitions.globalOptions.fixedPixelsBottom = 0;
-		}
+	.config(function ($ionicConfigProvider, $stateProvider, $urlRouterProvider, $ionicFilterBarConfigProvider, $ionicNativeTransitionsProvider) {
+		$ionicConfigProvider.scrolling.jsScrolling(false);
+		
+		$ionicNativeTransitionsProvider.setDefaultOptions({
+			duration: 400, // in milliseconds (ms), default 400,
+			slowdownfactor: 4, // overlap views (higher number is more) or no overlap (1), default 4
+			iosdelay: -1, // ms to wait for the iOS webview to update before animation kicks in, default -1
+			androiddelay: -1, // same as above but for Android, default -1
+			winphonedelay: -1, // same as above but for Windows Phone, default -1,
+			fixedPixelsTop: 0, // the number of pixels of your fixed header, default 0 (iOS and Android)
+			fixedPixelsBottom: 0, // the number of pixels of your fixed footer (f.i. a tab bar), default 0 (iOS and Android)
+			triggerTransitionEvent: "$ionicView.afterEnter", // internal ionic-native-transitions option
+			backInOppositeDirection: false // Takes over default back transition and state back transition to use the opposite direction transition to go back
+		});
+		$ionicNativeTransitionsProvider.setDefaultTransition({
+			type: "slide",
+			direction: "left"
+		});
+		$ionicNativeTransitionsProvider.setDefaultBackTransition({
+			type: "slide",
+			direction: "right"
+		});
+		$ionicNativeTransitionsProvider.enable(true, false);
+
 
 		$ionicFilterBarConfigProvider.theme("light");
 		$ionicFilterBarConfigProvider.clear("ion-close");
