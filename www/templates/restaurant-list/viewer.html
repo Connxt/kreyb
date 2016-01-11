@@ -2,12 +2,9 @@
 	<ion-slide-box on-slide-changed="slideChanged(index)" show-pager="false">
 		<ion-slide ng-repeat="offering in restaurant.offerings">
 			<img ng-src="{{ offering.photo }}" class="fullscreen-image" />
-			<!-- <p class="info">{{ offering.name }}</p> -->
-			<!-- <span style="color: white;"> -->
-				<h4 style="color: white;">{{ offering.name }}</h4>
-				<h4 style="color: white;">{{ offering.description }}</h4>
-				<h4 style="color: white;">{{ offering.price | currency:"₱" }}</h4>
-			<!-- </span> -->
+			<h4 style="color: white;">{{ offering.name }}</h4>
+			<h4 style="color: white;">{{ offering.description }}</h4>
+			<h4 style="color: white;">{{ offering.price | currency:"₱" }}</h4>
 		</ion-slide>
 	</ion-slide-box>
 </div>

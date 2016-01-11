@@ -6,6 +6,7 @@
 		"kreyb.filters",
 		"ionic",
 		"ngResource",
+		"ngCordova",
 		"firebase",
 		"jett.ionic.filter.bar",
 		"jett.ionic.content.banner",
@@ -21,9 +22,22 @@
 
 	.constant("OFFLINE_KEY", "kreyb.restaurants")
 
-	.constant("MAX_LOADING_TIME", 20000)
+	.constant("MAX_LOADING_TIME", 100000)
 
-	.config(function ($stateProvider, $urlRouterProvider, $ionicFilterBarConfigProvider) {
+	.config(function ($ionicConfigProvider, $stateProvider, $urlRouterProvider, $ionicFilterBarConfigProvider) {
+		if(window.cordova) {
+			// $ionicConfigProvider.views.transition("none");
+			// // then override any default you want
+			// window.plugins.nativepagetransitions.globalOptions.duration = 500;
+			// window.plugins.nativepagetransitions.globalOptions.iosdelay = 350;
+			// window.plugins.nativepagetransitions.globalOptions.androiddelay = 350;
+			// window.plugins.nativepagetransitions.globalOptions.winphonedelay = 350;
+			// window.plugins.nativepagetransitions.globalOptions.slowdownfactor = 4;
+			// // these are used for slide left/right only currently
+			// window.plugins.nativepagetransitions.globalOptions.fixedPixelsTop = 0;
+			// window.plugins.nativepagetransitions.globalOptions.fixedPixelsBottom = 0;
+		}
+
 		$ionicFilterBarConfigProvider.theme("light");
 		$ionicFilterBarConfigProvider.clear("ion-close");
 		$ionicFilterBarConfigProvider.search("ion-search");
@@ -71,6 +85,7 @@
 				// a much nicer keyboard experience.
 				cordova.plugins.Keyboard.disableScroll(true);
 			}
+
 			if(window.StatusBar) {
 				// StatusBar.styleDefault();
 				StatusBar.styleLightContent();
