@@ -56,7 +56,7 @@
 		};
 	})
 
-	.factory("OfflineData", function ($q, $ionicPlatform, $cordovaSQLite, OFFLINE_KEY) {
+	.factory("OfflineData", function ($q, $ionicPlatform, $cordovaSQLite) {
 		var db;
 
 		$ionicPlatform.ready(function () {
