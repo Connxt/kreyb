@@ -94,6 +94,8 @@
 				// from snapping when text inputs are focused. Ionic handles this internally for
 				// a much nicer keyboard experience.
 				cordova.plugins.Keyboard.disableScroll(true);
+
+				Keyboard.disableScrollingInShrinkView(true);
 			}
 
 			if(window.StatusBar) {
