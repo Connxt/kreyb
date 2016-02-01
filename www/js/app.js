@@ -23,7 +23,13 @@
 
 	.constant("MAX_LOADING_TIME", 100000)
 
-	.config(function ($ionicConfigProvider, $stateProvider, $urlRouterProvider, $ionicFilterBarConfigProvider) {
+	.config(function (
+			$ionicConfigProvider,
+			$stateProvider,
+			$urlRouterProvider,
+			$ionicFilterBarConfigProvider
+			// $ionicNativeTransitionsProvider
+		) {
 		$ionicConfigProvider.scrolling.jsScrolling(false);
 
 		// $ionicNativeTransitionsProvider.setDefaultOptions({
@@ -46,7 +52,6 @@
 		// 	direction: "right"
 		// });
 		// $ionicNativeTransitionsProvider.enable(true, false);
-
 
 		$ionicFilterBarConfigProvider.theme("light");
 		$ionicFilterBarConfigProvider.clear("ion-close");
