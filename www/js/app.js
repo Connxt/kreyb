@@ -21,7 +21,7 @@
 
 	.constant("API_URL", "https://kreyb.firebaseio.com/")
 
-	.constant("MAX_LOADING_TIME", 100000)
+	.constant("MAX_LOADING_TIME", 1000000)
 
 	.config(function (
 			$ionicConfigProvider,
